@@ -8,7 +8,7 @@ import kotlinx.coroutines.SupervisorJob
 
 abstract class BaseViewModel :ViewModel(){
     private val viewModelJob= SupervisorJob()
-private  val scope= CoroutineScope(Dispatchers.Main+viewModelJob)
+   var scope= CoroutineScope(Dispatchers.Main+viewModelJob)
 
 
     override fun onCleared() {
