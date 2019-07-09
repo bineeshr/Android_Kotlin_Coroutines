@@ -39,7 +39,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "androidx.navigation:navigation-fragment:${versions.nav_version}"
     implementation "androidx.navigation:navigation-ui:${versions.nav_version}"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.ifecycle_version"
     kapt 'com.android.databinding:compiler:3.1.4'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
@@ -48,6 +47,8 @@ dependencies {
     implementation  "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+
+
 }
 kapt {
     generateStubs = true

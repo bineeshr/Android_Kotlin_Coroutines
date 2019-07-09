@@ -3,8 +3,7 @@ package com.app.mvv.coroutine.ui.user
 import androidx.lifecycle.MutableLiveData
 import com.app.mvv.coroutine.base.BaseViewModel
 import com.app.mvv.coroutine.data.AllGitUserResponse
-import kotlinx.coroutines.*
-import java.lang.Exception
+import kotlinx.coroutines.launch
 
 class UserViewModel(private val userRepository:UserRepository) :BaseViewModel() {
     val allGitUserResponse=MutableLiveData<MutableList<AllGitUserResponse>>()
@@ -12,9 +11,8 @@ class UserViewModel(private val userRepository:UserRepository) :BaseViewModel() 
     scope.launch {
         val response=userRepository.getUserData()
         try{
-            if(response.isSuccessful){
-                allGitUserResponse.value=response.body()
-            }
+                allGitUserResponse.value=response
+
         }catch (e:Exception){
             print(e.message)
 

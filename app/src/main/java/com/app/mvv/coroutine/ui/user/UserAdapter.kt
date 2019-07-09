@@ -3,12 +3,14 @@ package com.app.mvv.coroutine.ui.user
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.app.mvv.coroutine.base.BaseViewHolder
 import com.app.mvv.coroutine.data.AllGitUserResponse
 import com.app.mvv.coroutine.databinding.AdapterUserBinding
 
-class UserAdapter(var userList: MutableList<AllGitUserResponse> = mutableListOf()) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val adapterUserBinding = AdapterUserBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+class UserAdapter(private var userList: MutableList<AllGitUserResponse> = ArrayList()) :
+    RecyclerView.Adapter<BaseViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        val adapterUserBinding = AdapterUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UserViewHolder(adapterUserBinding)
     }
 
@@ -16,27 +18,27 @@ class UserAdapter(var userList: MutableList<AllGitUserResponse> = mutableListOf(
         return userList.size
     }
 
-    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val user=userList[position]
-        holder.onBind(user)
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+        holder.onBind(position)
     }
 
     fun clearData() {
         userList.clear()
     }
-    class UserViewHolder(private val binding: AdapterUserBinding) :RecyclerView.ViewHolder(binding.root) {
 
+    inner class UserViewHolder(private val binding: AdapterUserBinding) : BaseViewHolder(binding.root) {
 
-         fun onBind(user: AllGitUserResponse) {
-             binding.txtUserName.text=user.login
-             binding.txtUserDetails.text=user.type
-             binding.executePendingBindings()
+        override
+        fun onBind(position: Int) {
+            val user=userList[position]
+            binding.viewModel=user
+            binding.executePendingBindings()
         }
 
     }
 
-    fun addAllUser(users: MutableList<AllGitUserResponse>){
-        userList=users
-        notifyDataSetChanged()
+    fun addAllUser(users: MutableList<AllGitUserResponse>) {
+        userList = users
+        notifyDataSetChanged();
     }
 }
