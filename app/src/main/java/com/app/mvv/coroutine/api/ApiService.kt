@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("/users")
-     suspend fun getAllGitUserAsync(): Response<List<AllGitUserResponse>>
+     suspend fun getAllGitUserAsync(): Response<MutableList<AllGitUserResponse>>
     
 }

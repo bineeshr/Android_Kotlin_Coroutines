@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class UserRepository(private val apiService:ApiService) {
 
-    suspend fun getUserData(): Response<List<AllGitUserResponse>> {
+    suspend fun getUserData(): Response<MutableList<AllGitUserResponse>> {
         return withContext(Dispatchers.IO) {
             apiService.getAllGitUserAsync()
         }

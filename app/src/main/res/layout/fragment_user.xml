@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="com.app.mvv.coroutine.ui.user.UserViewModel"/>
+
+    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
@@ -10,7 +20,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/adapter_user"
+                app:adapter="@{viewModel.allGitUserResponse}"
+        >
 
         </androidx.recyclerview.widget.RecyclerView>
 

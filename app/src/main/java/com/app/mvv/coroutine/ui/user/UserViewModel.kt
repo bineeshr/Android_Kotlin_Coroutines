@@ -7,15 +7,16 @@ import kotlinx.coroutines.*
 import java.lang.Exception
 
 class UserViewModel(private val userRepository:UserRepository) :BaseViewModel() {
-    val livedata=MutableLiveData<List<AllGitUserResponse>>()
+    val allGitUserResponse=MutableLiveData<MutableList<AllGitUserResponse>>()
     fun getUserData(){
     scope.launch {
         val response=userRepository.getUserData()
         try{
             if(response.isSuccessful){
-                livedata.value=response.body()
+                allGitUserResponse.value=response.body()
             }
         }catch (e:Exception){
+            print(e.message)
 
         }
         }
