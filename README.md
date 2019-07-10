@@ -8,4 +8,4 @@ This is very Simple Project
 2.Display to the UI
 
 
-Here I am Using MVVM Architecture ,DataBinding, Koin , Coroutine,Navigation Architecture Component,LiveData
+MVVM Architecture ,DataBinding, Koin , Coroutine,Navigation Architecture Component,LiveData
