@@ -6,9 +6,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
-class UserRepository(private val apiService:ApiService) {
+class UserRepository(private val apiService: ApiService) {
 
-    suspend fun getUserData(): MutableList<AllGitUserResponse>{
+    suspend fun getUserData(): MutableList<AllGitUserResponse> {
         return withContext(Dispatchers.IO) {
             apiService.getAllGitUserAsync()
         }

@@ -30,8 +30,8 @@ class UserAdapter(private var userList: MutableList<AllGitUserResponse> = ArrayL
 
         override
         fun onBind(position: Int) {
-            val user=userList[position]
-            binding.viewModel=user
+            val user = userList[position]
+            binding.userItem=user
             binding.executePendingBindings()
         }
 
@@ -39,6 +39,6 @@ class UserAdapter(private var userList: MutableList<AllGitUserResponse> = ArrayL
 
     fun addAllUser(users: MutableList<AllGitUserResponse>) {
         userList = users
-        notifyDataSetChanged();
+        notifyDataSetChanged()
     }
 }

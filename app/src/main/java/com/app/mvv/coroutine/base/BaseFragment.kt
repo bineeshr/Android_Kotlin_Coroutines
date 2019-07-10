@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
-abstract class BaseFragment<T : ViewDataBinding,V:BaseViewModel> : Fragment() {
+abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel> : Fragment() {
     var viewDataBinding: T? = null
     private var mViewModel: V? = null
 
@@ -24,7 +24,7 @@ abstract class BaseFragment<T : ViewDataBinding,V:BaseViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel=viewModel()
+        mViewModel = viewModel()
         viewDataBinding?.let {
             it.setVariable(bindingVariable(), mViewModel)
             it.executePendingBindings()

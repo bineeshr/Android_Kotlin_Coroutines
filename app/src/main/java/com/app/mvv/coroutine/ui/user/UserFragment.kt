@@ -11,8 +11,9 @@ import com.app.mvv.coroutine.base.BaseFragment
 import com.app.mvv.coroutine.databinding.FragmentUserBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UserFragment : BaseFragment<FragmentUserBinding,UserViewModel>() {
+class UserFragment : BaseFragment<FragmentUserBinding, UserViewModel>() {
     private lateinit var userAdapter: UserAdapter
+
     override fun bindingVariable(): Int {
         return BR.viewModel
     }
@@ -26,33 +27,23 @@ class UserFragment : BaseFragment<FragmentUserBinding,UserViewModel>() {
     }
 
     private val userViewModel by viewModel<UserViewModel>()
-    private val fragmentUserBinding:FragmentUserBinding? by lazy {
+    private val fragmentUserBinding: FragmentUserBinding? by lazy {
         viewDataBinding
     }
 
 
-
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        userAdapter=UserAdapter()
+        userAdapter = UserAdapter()
 
-        fragmentUserBinding?.userRecyclerView?.apply{
-            val layoutManager=LinearLayoutManager(activity)
-            layoutManager?.orientation = RecyclerView.VERTICAL
+        fragmentUserBinding?.userRecyclerView?.apply {
+            val layoutManager = LinearLayoutManager(activity)
+            layoutManager.orientation = RecyclerView.VERTICAL
             this.layoutManager = layoutManager
-           itemAnimator = DefaultItemAnimator()
-            addItemDecoration(DividerItemDecoration(fragmentUserBinding?.userRecyclerView?.getContext(), DividerItemDecoration.VERTICAL))
+            itemAnimator = DefaultItemAnimator()
             adapter = userAdapter
         }
-
         userViewModel.getUserData()
-
-//        userViewModel.allGitUserResponse.observe(this, Observer {
-//            userAdapter.clearData()
-//            userAdapter.addAllUser(it)
-//
-//        })
 
     }
 
